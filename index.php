@@ -11,11 +11,11 @@ $isLoggedIn = isLoggedIn();
 $user = getCurrentUser();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TugasGallery - Share Your Moments</title>
+    <title>Aplikasi Gallery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -77,7 +77,7 @@ $user = getCurrentUser();
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                         </div>
-                        <span class="text-white font-bold text-xl">TugasGallery</span>
+                        <span class="text-white font-bold text-xl">Aplikasi Gallery</span>
                     </div>
                 </div>
 
@@ -85,13 +85,13 @@ $user = getCurrentUser();
                 <div class="flex items-center space-x-4">
                     <?php if ($isLoggedIn): ?>
                         <a href="<?php echo baseUrl('pages/gallery/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
-                            Gallery
+                            Galeri
                         </a>
                         <a href="<?php echo baseUrl('pages/album/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
-                            Albums
+                            Album
                         </a>
                         <a href="<?php echo baseUrl('pages/profile/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
-                            Profile
+                            Profil
                         </a>
                         <div class="flex items-center space-x-3">
                             <span class="text-white/80">
@@ -101,15 +101,15 @@ $user = getCurrentUser();
                                 <?php endif; ?>
                             </span>
                             <a href="<?php echo baseUrl('actions/auth/logout_action.php'); ?>" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl transition-all">
-                                Logout
+                                Keluar
                             </a>
                         </div>
                     <?php else: ?>
                         <a href="<?php echo baseUrl('pages/auth/login.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
-                            Login
+                            Masuk
                         </a>
                         <a href="<?php echo baseUrl('pages/auth/register.php'); ?>" class="px-4 py-2 bg-white text-purple-600 font-semibold rounded-xl hover:bg-gray-100 transition-all">
-                            Sign Up
+                            Daftar
                         </a>
                     <?php endif; ?>
                 </div>
@@ -133,26 +133,26 @@ $user = getCurrentUser();
                 <!-- Text Content -->
                 <div class="slide-up">
                     <h1 class="text-4xl lg:text-6xl font-bold leading-tight mb-6">
-                        Share Your <br>
-                        <span class="text-yellow-300">Beautiful Moments</span>
+                        Selamat Datang di <br>
+                        <span class="text-yellow-300">Aplikasi Gallery</span>
                     </h1>
                     <p class="text-xl text-white/80 mb-8 leading-relaxed">
-                        TugasGallery is your personal space to upload, organize, and share your favorite photos with the world. Create albums, get likes, and connect through images.
+                        Aplikasi ini berfungsi mirip seperti Pinterest dimana anda dapat menambahkan foto favorit anda dan menambahkan album untuk foto favorit anda.
                     </p>
                     <div class="flex flex-wrap gap-4">
                         <?php if ($isLoggedIn): ?>
                             <a href="<?php echo baseUrl('pages/gallery/index.php'); ?>" class="px-8 py-4 bg-white text-purple-600 font-bold rounded-2xl hover:bg-gray-100 transition-all transform hover:scale-105 shadow-xl">
-                                Browse Gallery
+                                Lihat Galeri
                             </a>
                             <a href="<?php echo baseUrl('pages/gallery/upload.php'); ?>" class="px-8 py-4 bg-white/20 text-white font-semibold rounded-2xl hover:bg-white/30 transition-all border-2 border-white/30">
-                                Upload Photo
+                                Upload Foto
                             </a>
                         <?php else: ?>
                             <a href="<?php echo baseUrl('pages/auth/register.php'); ?>" class="px-8 py-4 bg-white text-purple-600 font-bold rounded-2xl hover:bg-gray-100 transition-all transform hover:scale-105 shadow-xl">
-                                Get Started Free
+                                Daftar
                             </a>
                             <a href="<?php echo baseUrl('pages/auth/login.php'); ?>" class="px-8 py-4 bg-white/20 text-white font-semibold rounded-2xl hover:bg-white/30 transition-all border-2 border-white/30">
-                                Sign In
+                                Masuk
                             </a>
                         <?php endif; ?>
                     </div>
@@ -189,10 +189,10 @@ $user = getCurrentUser();
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <span class="font-bold text-xl">TugasGallery</span>
+                    <span class="font-bold text-xl">Aplikasi Gallery</span>
                 </div>
                 <p class="text-gray-400 text-sm">
-                    &copy; <?php echo date('Y'); ?> TugasGallery. All rights reserved.
+                    &copy; <?php echo date('Y'); ?> Aplikasi Gallery. All rights reserved.
                 </p>
             </div>
         </div>

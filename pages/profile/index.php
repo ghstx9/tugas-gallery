@@ -66,11 +66,11 @@ try {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile - TugasGallery</title>
+    <title>Profil Saya - Aplikasi Gallery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .gradient-bg {
@@ -90,13 +90,13 @@ try {
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                         </div>
-                        <span class="text-white font-bold text-xl">TugasGallery</span>
+                        <span class="text-white font-bold text-xl">Aplikasi Gallery</span>
                     </a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="<?php echo baseUrl('pages/gallery/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Gallery</a>
-                    <a href="<?php echo baseUrl('pages/album/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Albums</a>
-                    <a href="<?php echo baseUrl('pages/profile/index.php'); ?>" class="text-white px-3 py-2 rounded-lg bg-white/20">Profile</a>
+                    <a href="<?php echo baseUrl('pages/gallery/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Galeri</a>
+                    <a href="<?php echo baseUrl('pages/album/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Album</a>
+                    <a href="<?php echo baseUrl('pages/profile/index.php'); ?>" class="text-white px-3 py-2 rounded-lg bg-white/20">Profil</a>
                     <div class="flex items-center space-x-3">
                         <span class="text-white/80">
                             <strong class="text-white"><?php echo e($user['nama_lengkap']); ?></strong>
@@ -104,7 +104,7 @@ try {
                                 <span class="ml-1 px-2 py-0.5 bg-yellow-400 text-yellow-900 text-xs font-bold rounded-full">Admin</span>
                             <?php endif; ?>
                         </span>
-                        <a href="<?php echo baseUrl('actions/auth/logout_action.php'); ?>" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl transition-all">Logout</a>
+                        <a href="<?php echo baseUrl('actions/auth/logout_action.php'); ?>" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl transition-all">Keluar</a>
                     </div>
                 </div>
             </div>
@@ -127,12 +127,12 @@ try {
                     <?php if (isAdmin()): ?>
                         <span class="inline-block px-3 py-1 bg-yellow-400 text-yellow-900 text-sm font-bold rounded-full mb-3">Admin</span>
                     <?php endif; ?>
-                    <p class="text-white/70 text-sm">Member since <?php echo formatDate($userInfo['created_at'] ?? ''); ?></p>
+                    <p class="text-white/70 text-sm">Anggota sejak <?php echo formatDate($userInfo['created_at'] ?? ''); ?></p>
                 </div>
                 
                 <!-- Edit Profile Button -->
                 <a href="<?php echo baseUrl('pages/profile/edit.php'); ?>" class="px-6 py-3 bg-white/20 hover:bg-white/30 text-white font-semibold rounded-xl transition-all border border-white/30">
-                    Edit Profile
+                    Edit Profil
                 </a>
             </div>
         </div>
@@ -144,19 +144,19 @@ try {
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                 <div>
                     <p class="text-3xl font-bold text-purple-600"><?php echo $photoCount; ?></p>
-                    <p class="text-gray-500 text-sm">Photos</p>
+                    <p class="text-gray-500 text-sm">Foto</p>
                 </div>
                 <div>
                     <p class="text-3xl font-bold text-indigo-600"><?php echo $albumCount; ?></p>
-                    <p class="text-gray-500 text-sm">Albums</p>
+                    <p class="text-gray-500 text-sm">Album</p>
                 </div>
                 <div>
                     <p class="text-3xl font-bold text-pink-600"><?php echo $likesReceived; ?></p>
-                    <p class="text-gray-500 text-sm">Likes Received</p>
+                    <p class="text-gray-500 text-sm">Like Diterima</p>
                 </div>
                 <div>
                     <p class="text-3xl font-bold text-blue-600"><?php echo number_format($totalViews); ?></p>
-                    <p class="text-gray-500 text-sm">Total Views</p>
+                    <p class="text-gray-500 text-sm">Total Dilihat</p>
                 </div>
             </div>
         </div>
@@ -166,7 +166,7 @@ try {
     <?php if ($flash): ?>
         <div class="max-w-5xl mx-auto px-4 mt-4">
             <div class="p-4 rounded-lg <?php echo $flash['type'] === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'; ?>">
-                <?php echo e($flash['message']); ?>
+                <?php echo $flash['message']; ?>
             </div>
         </div>
     <?php endif; ?>
@@ -176,20 +176,20 @@ try {
         <div class="grid md:grid-cols-3 gap-8">
             <!-- User Details -->
             <div class="bg-white rounded-2xl shadow-lg p-6">
-                <h2 class="text-lg font-bold text-gray-800 mb-4">Profile Information</h2>
+                <h2 class="text-lg font-bold text-gray-800 mb-4">Informasi Profil</h2>
                 <div class="space-y-4">
                     <div>
                         <label class="text-sm text-gray-500">Email</label>
-                        <p class="text-gray-800"><?php echo e($userInfo['Email'] ?? ''); ?></p>
+                        <p class="text-gray-800"><?php echo $userInfo['Email'] ?? ''; ?></p>
                     </div>
                     <div>
-                        <label class="text-sm text-gray-500">Full Name</label>
-                        <p class="text-gray-800"><?php echo e($userInfo['NamaLengkap'] ?? ''); ?></p>
+                        <label class="text-sm text-gray-500">Nama Lengkap</label>
+                        <p class="text-gray-800"><?php echo $userInfo['NamaLengkap'] ?? ''; ?></p>
                     </div>
                     <?php if (!empty($userInfo['Alamat'])): ?>
                     <div>
-                        <label class="text-sm text-gray-500">Address</label>
-                        <p class="text-gray-800"><?php echo e($userInfo['Alamat']); ?></p>
+                        <label class="text-sm text-gray-500">Alamat</label>
+                        <p class="text-gray-800"><?php echo $userInfo['Alamat']; ?></p>
                     </div>
                     <?php endif; ?>
                 </div>
@@ -198,8 +198,8 @@ try {
             <!-- Recent Photos -->
             <div class="md:col-span-2">
                 <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-lg font-bold text-gray-800">My Recent Photos</h2>
-                    <a href="<?php echo baseUrl('pages/gallery/upload.php'); ?>" class="text-purple-600 hover:text-purple-700 text-sm font-medium">Upload New</a>
+                    <h2 class="text-lg font-bold text-gray-800">Foto Terbaru</h2>
+                    <a href="<?php echo baseUrl('pages/gallery/upload.php'); ?>" class="text-purple-600 hover:text-purple-700 text-sm font-medium">Upload Baru</a>
                 </div>
                 
                 <?php if (empty($recentPhotos)): ?>
@@ -207,9 +207,9 @@ try {
                         <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
-                        <p class="text-gray-500 mb-4">You haven't uploaded any photos yet.</p>
+                        <p class="text-gray-500 mb-4">Belum ada foto yang diunggah.</p>
                         <a href="<?php echo baseUrl('pages/gallery/upload.php'); ?>" class="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition-all">
-                            Upload Your First Photo
+                            Unggah Foto Pertama
                         </a>
                     </div>
                 <?php else: ?>
@@ -227,7 +227,7 @@ try {
                                     <?php endif; ?>
                                 </div>
                                 <div class="p-3">
-                                    <p class="text-sm text-gray-800 truncate font-medium"><?php echo e($photo['JudulFoto']); ?></p>
+                                    <p class="text-sm text-gray-800 truncate font-medium"><?php echo $photo['JudulFoto']; ?></p>
                                     <div class="flex items-center space-x-3 text-xs text-gray-400 mt-1">
                                         <span class="flex items-center">
                                             <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

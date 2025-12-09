@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Validate CSRF token
 if (!validateCsrfToken($_POST['csrf_token'] ?? '')) {
-    setFlash('error', 'Invalid request. Please try again.');
+    setFlash('error', 'Permintaan tidak valid. Silakan coba lagi.');
     redirect(baseUrl('pages/album/index.php'));
 }
 
@@ -28,12 +28,12 @@ $isPublic = isset($_POST['is_public']) ? (int)$_POST['is_public'] === 1 : true;
 
 // Validate album name
 if (empty($namaAlbum)) {
-    setFlash('error', 'Please enter an album name.');
+    setFlash('error', 'Silakan masukkan nama album.');
     redirect(baseUrl('pages/album/index.php'));
 }
 
 if (strlen($namaAlbum) > 255) {
-    setFlash('error', 'Album name must not exceed 255 characters.');
+    setFlash('error', 'Nama album tidak boleh melebihi 255 karakter.');
     redirect(baseUrl('pages/album/index.php'));
 }
 
@@ -55,11 +55,11 @@ try {
     
     $albumId = $pdo->lastInsertId();
     
-    setFlash('success', 'Album "' . e($namaAlbum) . '" created successfully!');
+    setFlash('success', 'Album "' . e($namaAlbum) . '" berhasil dibuat!');
     redirect(baseUrl('pages/album/view.php?id=' . $albumId));
     
 } catch (PDOException $e) {
     error_log("Create album error: " . $e->getMessage());
-    setFlash('error', 'An error occurred. Please try again.');
+    setFlash('error', 'Terjadi kesalahan. Silakan coba lagi.');
     redirect(baseUrl('pages/album/index.php'));
 }

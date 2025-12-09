@@ -90,11 +90,11 @@ $canDelete = $isOwner || isAdmin();
 $canEdit = $isOwner || isAdmin();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo e($photo['JudulFoto']); ?> - TugasGallery</title>
+    <title><?php echo e($photo['JudulFoto']); ?> - Aplikasi Gallery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -140,13 +140,13 @@ $canEdit = $isOwner || isAdmin();
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                         </div>
-                        <span class="text-white font-bold text-xl">TugasGallery</span>
+                        <span class="text-white font-bold text-xl">Aplikasi Gallery</span>
                     </a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="<?php echo baseUrl('pages/gallery/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Gallery</a>
-                    <a href="<?php echo baseUrl('pages/album/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Albums</a>
-                    <a href="<?php echo baseUrl('pages/profile/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Profile</a>
+                    <a href="<?php echo baseUrl('pages/gallery/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Galeri</a>
+                    <a href="<?php echo baseUrl('pages/album/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Album</a>
+                    <a href="<?php echo baseUrl('pages/profile/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Profil</a>
                     <div class="flex items-center space-x-3">
                         <span class="text-white/80">
                             <strong class="text-white"><?php echo e($user['nama_lengkap']); ?></strong>
@@ -154,7 +154,7 @@ $canEdit = $isOwner || isAdmin();
                                 <span class="ml-1 px-2 py-0.5 bg-yellow-400 text-yellow-900 text-xs font-bold rounded-full">Admin</span>
                             <?php endif; ?>
                         </span>
-                        <a href="<?php echo baseUrl('actions/auth/logout_action.php'); ?>" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl transition-all">Logout</a>
+                        <a href="<?php echo baseUrl('actions/auth/logout_action.php'); ?>" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl transition-all">Keluar</a>
                     </div>
                 </div>
             </div>
@@ -208,7 +208,7 @@ $canEdit = $isOwner || isAdmin();
                         <?php endif; ?>
                         <?php if ($canDelete): ?>
                         <button onclick="confirmDelete(<?php echo $photoId; ?>)" class="px-4 py-2 bg-red-100 text-red-600 rounded-xl hover:bg-red-200 transition-all">
-                            Delete
+                            Hapus
                         </button>
                         <?php endif; ?>
                     </div>
@@ -231,7 +231,7 @@ $canEdit = $isOwner || isAdmin();
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                             </svg>
-                            <span>by <strong><?php echo e($photo['NamaLengkap']); ?></strong> (@<?php echo e($photo['Username']); ?>)</span>
+                            <span>oleh <strong><?php echo e($photo['NamaLengkap']); ?></strong> (@<?php echo e($photo['Username']); ?>)</span>
                         </div>
                         <div class="flex items-center text-sm text-gray-500">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -244,7 +244,7 @@ $canEdit = $isOwner || isAdmin();
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                             </svg>
-                            <span><?php echo $photo['view_count']; ?> views</span>
+                            <span><?php echo $photo['view_count']; ?> dilihat</span>
                         </div>
                         <?php if ($photo['NamaAlbum']): ?>
                         <div class="flex items-center text-sm text-gray-500">
@@ -259,7 +259,7 @@ $canEdit = $isOwner || isAdmin();
 
                 <!-- Comments Section -->
                 <div class="bg-white rounded-2xl shadow-lg p-6">
-                    <h3 class="font-bold text-gray-800 mb-4">Comments (<?php echo count($comments); ?>)</h3>
+                    <h3 class="font-bold text-gray-800 mb-4">Komentar (<?php echo count($comments); ?>)</h3>
                     
                     <!-- Comment Form -->
                     <form action="<?php echo baseUrl('actions/photo/comment_action.php'); ?>" method="POST" class="mb-6">
@@ -270,17 +270,17 @@ $canEdit = $isOwner || isAdmin();
                             rows="2" 
                             required
                             class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none resize-none mb-2"
-                            placeholder="Add a comment..."
+                            placeholder="Tambahkan komentar..."
                         ></textarea>
                         <button type="submit" class="px-4 py-2 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition-all">
-                            Post Comment
+                            Kirim Komentar
                         </button>
                     </form>
                     
                     <!-- Comments List -->
                     <div class="space-y-4 max-h-96 overflow-y-auto">
                         <?php if (empty($comments)): ?>
-                            <p class="text-gray-500 text-center py-4">No comments yet. Be the first!</p>
+                            <p class="text-gray-500 text-center py-4">Belum ada komentar. Jadilah yang pertama!</p>
                         <?php else: ?>
                             <?php foreach ($comments as $comment): ?>
                                 <div class="border-b border-gray-100 pb-4 last:border-0">
@@ -306,7 +306,7 @@ $canEdit = $isOwner || isAdmin();
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
-                Back to Gallery
+                Kembali ke Galeri
             </a>
         </div>
     </main>
@@ -341,7 +341,7 @@ $canEdit = $isOwner || isAdmin();
         }
         
         function confirmDelete(photoId) {
-            if (confirm('Are you sure you want to delete this photo? This action cannot be undone.')) {
+            if (confirm('Apakah Anda yakin ingin menghapus foto ini? Tindakan ini tidak dapat dibatalkan.')) {
                 window.location.href = '<?php echo baseUrl('actions/photo/delete_action.php'); ?>?id=' + photoId;
             }
         }

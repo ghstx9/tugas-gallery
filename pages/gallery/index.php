@@ -59,11 +59,11 @@ try {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - TugasGallery</title>
+    <title>Galeri - Aplikasi Gallery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -113,20 +113,20 @@ try {
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                         </div>
-                        <span class="text-white font-bold text-xl">TugasGallery</span>
+                        <span class="text-white font-bold text-xl">Aplikasi Gallery</span>
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="flex items-center space-x-4">
                     <a href="<?php echo baseUrl('pages/gallery/index.php'); ?>" class="text-white px-3 py-2 rounded-lg bg-white/20">
-                        Gallery
+                        Galeri
                     </a>
                     <a href="<?php echo baseUrl('pages/album/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
-                        Albums
+                        Album
                     </a>
                     <a href="<?php echo baseUrl('pages/profile/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
-                        Profile
+                        Profil
                     </a>
                     <div class="flex items-center space-x-3">
                         <span class="text-white/80">
@@ -136,7 +136,7 @@ try {
                             <?php endif; ?>
                         </span>
                         <a href="<?php echo baseUrl('actions/auth/logout_action.php'); ?>" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl transition-all">
-                            Logout
+                            Keluar
                         </a>
                     </div>
                 </div>
@@ -149,14 +149,14 @@ try {
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
                 <div>
-                    <h1 class="text-3xl font-bold text-gray-800">Photo Gallery</h1>
-                    <p class="text-gray-500 mt-1">Browse beautiful photos from our community</p>
+                    <h1 class="text-3xl font-bold text-gray-800">Galeri Foto</h1>
+                    <p class="text-gray-500 mt-1">Jelajahi foto-foto indah dari komunitas kami</p>
                 </div>
                 <a href="<?php echo baseUrl('pages/gallery/upload.php'); ?>" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold rounded-xl hover:from-purple-600 hover:to-indigo-700 transition-all transform hover:scale-105 shadow-lg">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                     </svg>
-                    Upload Photo
+                    Unggah Foto
                 </a>
             </div>
         </div>
@@ -181,13 +181,13 @@ try {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                     </svg>
                 </div>
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">No photos yet</h3>
-                <p class="text-gray-500 mb-6">Be the first to share a photo with the community!</p>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Belum ada foto</h3>
+                <p class="text-gray-500 mb-6">Jadilah yang pertama untuk berbagi foto dengan komunitas!</p>
                 <a href="<?php echo baseUrl('pages/gallery/upload.php'); ?>" class="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-semibold rounded-xl hover:bg-purple-700 transition-all">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                     </svg>
-                    Upload Your First Photo
+                    Unggah Foto Pertama Anda
                 </a>
             </div>
         <?php else: ?>
@@ -207,7 +207,7 @@ try {
                             <div class="photo-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-300 flex items-end p-4">
                                 <div class="text-white">
                                     <h3 class="font-semibold truncate"><?php echo e($photo['JudulFoto']); ?></h3>
-                                    <p class="text-sm text-white/80">by <?php echo e($photo['Username']); ?></p>
+                                    <p class="text-sm text-white/80">oleh <?php echo e($photo['Username']); ?></p>
                                 </div>
                             </div>
                         </div>
@@ -215,7 +215,7 @@ try {
                         <!-- Photo Info -->
                         <div class="p-4">
                             <h3 class="font-semibold text-gray-800 truncate mb-1"><?php echo e($photo['JudulFoto']); ?></h3>
-                            <p class="text-sm text-gray-500 mb-3">by <?php echo e($photo['Username']); ?></p>
+                            <p class="text-sm text-gray-500 mb-3">oleh <?php echo e($photo['Username']); ?></p>
                             
                             <!-- Stats -->
                             <div class="flex items-center space-x-4 text-sm text-gray-400">
@@ -253,7 +253,7 @@ try {
                     <nav class="flex items-center space-x-2">
                         <?php if ($page > 1): ?>
                             <a href="?page=<?php echo $page - 1; ?>" class="px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                                Previous
+                                Sebelumnya
                             </a>
                         <?php endif; ?>
                         
@@ -265,7 +265,7 @@ try {
                         
                         <?php if ($page < $totalPages): ?>
                             <a href="?page=<?php echo $page + 1; ?>" class="px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                                Next
+                                Selanjutnya
                             </a>
                         <?php endif; ?>
                     </nav>
@@ -278,7 +278,7 @@ try {
     <footer class="bg-white border-t mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <p class="text-center text-gray-400 text-sm">
-                &copy; <?php echo date('Y'); ?> TugasGallery. All rights reserved.
+                &copy; <?php echo date('Y'); ?> Aplikasi Gallery. All rights reserved.
             </p>
         </div>
     </footer>

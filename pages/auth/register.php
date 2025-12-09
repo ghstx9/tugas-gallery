@@ -20,7 +20,7 @@ unset($_SESSION['old_input']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - TugasGallery</title>
+    <title>Register - Aplikasi Gallery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -64,8 +64,8 @@ unset($_SESSION['old_input']);
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
                 </svg>
             </div>
-            <h1 class="text-2xl font-bold text-gray-800">Create Account</h1>
-            <p class="text-gray-500 mt-2">Join TugasGallery today</p>
+            <h1 class="text-2xl font-bold text-gray-800">Buat Akun</h1>
+            <p class="text-gray-500 mt-2">untuk mengakses aplikasi ini</p>
         </div>
 
         <!-- Flash Messages -->
@@ -92,9 +92,9 @@ unset($_SESSION['old_input']);
                     pattern="[a-zA-Z0-9_]+"
                     value="<?php echo e($old['username'] ?? ''); ?>"
                     class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none"
-                    placeholder="Choose a username"
+                    placeholder="Isi nama anda"
                 >
-                <p class="text-xs text-gray-400 mt-1">Letters, numbers, and underscores only</p>
+                <p class="text-xs text-gray-400 mt-1">Hanya huruf, angka, dan garis bawah</p>
             </div>
 
             <!-- Email -->
@@ -107,13 +107,13 @@ unset($_SESSION['old_input']);
                     required
                     value="<?php echo e($old['email'] ?? ''); ?>"
                     class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none"
-                    placeholder="Enter your email"
+                    placeholder="Masukkan email anda"
                 >
             </div>
 
             <!-- Full Name -->
             <div>
-                <label for="nama_lengkap" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                <label for="nama_lengkap" class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
                 <input 
                     type="text" 
                     id="nama_lengkap" 
@@ -121,19 +121,19 @@ unset($_SESSION['old_input']);
                     required
                     value="<?php echo e($old['nama_lengkap'] ?? ''); ?>"
                     class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none"
-                    placeholder="Enter your full name"
+                    placeholder="Masukkan nama anda"
                 >
             </div>
 
             <!-- Address (Optional) -->
             <div>
-                <label for="alamat" class="block text-sm font-medium text-gray-700 mb-2">Address <span class="text-gray-400">(Optional)</span></label>
+                <label for="alamat" class="block text-sm font-medium text-gray-700 mb-2">Alamat <span class="text-gray-400">(Optional)</span></label>
                 <textarea 
                     id="alamat" 
                     name="alamat" 
                     rows="2"
                     class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none resize-none"
-                    placeholder="Enter your address"
+                    placeholder="Masukkan alamat anda"
                 ><?php echo e($old['alamat'] ?? ''); ?></textarea>
             </div>
 
@@ -148,7 +148,7 @@ unset($_SESSION['old_input']);
                         required
                         minlength="6"
                         class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none pr-12"
-                        placeholder="Create a password"
+                        placeholder="Masukkan password anda"
                     >
                     <button 
                         type="button" 
@@ -161,12 +161,12 @@ unset($_SESSION['old_input']);
                         </svg>
                     </button>
                 </div>
-                <p class="text-xs text-gray-400 mt-1">At least 6 characters</p>
+                <p class="text-xs text-gray-400 mt-1">Minimal 6 karakter</p>
             </div>
 
             <!-- Confirm Password -->
             <div>
-                <label for="password_confirm" class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+                <label for="password_confirm" class="block text-sm font-medium text-gray-700 mb-2">Konfirmasi Password</label>
                 <div class="relative">
                     <input 
                         type="password" 
@@ -174,7 +174,7 @@ unset($_SESSION['old_input']);
                         name="password_confirm" 
                         required
                         class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none pr-12"
-                        placeholder="Confirm your password"
+                        placeholder="Masukkan konfirmasi password anda"
                     >
                     <button 
                         type="button" 
@@ -194,16 +194,16 @@ unset($_SESSION['old_input']);
                 type="submit" 
                 class="w-full py-3 px-4 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold rounded-xl hover:from-purple-600 hover:to-indigo-700 focus:ring-4 focus:ring-purple-200 transition-all transform hover:scale-[1.02] active:scale-[0.98]"
             >
-                Create Account
+                Buat Akun
             </button>
         </form>
 
         <!-- Login Link -->
         <div class="mt-8 text-center">
             <p class="text-gray-500">
-                Already have an account? 
+                Sudah punya akun? 
                 <a href="<?php echo baseUrl('pages/auth/login.php'); ?>" class="text-purple-600 font-semibold hover:text-purple-700 transition-colors">
-                    Sign in
+                    Login
                 </a>
             </p>
         </div>
@@ -211,7 +211,7 @@ unset($_SESSION['old_input']);
         <!-- Back to Home -->
         <div class="mt-4 text-center">
             <a href="<?php echo baseUrl('index.php'); ?>" class="text-gray-400 hover:text-gray-600 text-sm transition-colors">
-                ← Back to Home
+                ← Kembali ke Beranda
             </a>
         </div>
     </div>

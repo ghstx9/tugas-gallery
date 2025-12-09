@@ -18,13 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Validate CSRF token
 if (!validateCsrfToken($_POST['csrf_token'] ?? '')) {
-    setFlash('error', 'Invalid request. Please try again.');
+    setFlash('error', 'Permintaan tidak valid. Silakan coba lagi.');
     redirect(baseUrl('pages/gallery/upload.php'));
 }
 
 // Check if file was uploaded
 if (!isset($_FILES['photo']) || $_FILES['photo']['error'] === UPLOAD_ERR_NO_FILE) {
-    setFlash('error', 'Please select a photo to upload.');
+    setFlash('error', 'Silakan pilih foto untuk diunggah.');
     redirect(baseUrl('pages/gallery/upload.php'));
 }
 
@@ -37,12 +37,12 @@ $file = $_FILES['photo'];
 
 // Validate title
 if (empty($judul)) {
-    setFlash('error', 'Please enter a title for your photo.');
+    setFlash('error', 'Silakan masukkan judul untuk foto Anda.');
     redirect(baseUrl('pages/gallery/upload.php'));
 }
 
 if (strlen($judul) > 255) {
-    setFlash('error', 'Title must not exceed 255 characters.');
+    setFlash('error', 'Judul tidak boleh melebihi 255 karakter.');
     redirect(baseUrl('pages/gallery/upload.php'));
 }
 
@@ -60,12 +60,12 @@ if ($albumId !== null) {
         $stmt = $pdo->prepare("SELECT AlbumID FROM gallery_album WHERE AlbumID = ? AND UserID = ?");
         $stmt->execute([$albumId, getCurrentUserId()]);
         if (!$stmt->fetch()) {
-            setFlash('error', 'Invalid album selected.');
+            setFlash('error', 'Album yang dipilih tidak valid.');
             redirect(baseUrl('pages/gallery/upload.php'));
         }
     } catch (PDOException $e) {
         error_log("Album validation error: " . $e->getMessage());
-        setFlash('error', 'An error occurred. Please try again.');
+        setFlash('error', 'Terjadi kesalahan. Silakan coba lagi.');
         redirect(baseUrl('pages/gallery/upload.php'));
     }
 }
@@ -83,7 +83,7 @@ if (!is_dir($uploadDir)) {
 
 // Move uploaded file
 if (!move_uploaded_file($file['tmp_name'], $uploadPath)) {
-    setFlash('error', 'Failed to upload file. Please try again.');
+    setFlash('error', 'Gagal mengunggah file. Silakan coba lagi.');
     redirect(baseUrl('pages/gallery/upload.php'));
 }
 
@@ -126,7 +126,7 @@ try {
     
     $photoId = $pdo->lastInsertId();
     
-    setFlash('success', 'Photo uploaded successfully!');
+    setFlash('success', 'Foto berhasil diunggah!');
     redirect(baseUrl('pages/gallery/photo.php?id=' . $photoId));
     
 } catch (PDOException $e) {
@@ -136,6 +136,6 @@ try {
     }
     
     error_log("Photo upload error: " . $e->getMessage());
-    setFlash('error', 'An error occurred. Please try again.');
+    setFlash('error', 'Terjadi kesalahan. Silakan coba lagi.');
     redirect(baseUrl('pages/gallery/upload.php'));
 }

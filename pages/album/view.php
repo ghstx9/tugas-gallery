@@ -91,21 +91,21 @@ try {
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                         </div>
-                        <span class="text-white font-bold text-xl">TugasGallery</span>
+                        <span class="text-white font-bold text-xl">Aplikasi Gallery</span>
                     </a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="<?php echo baseUrl('pages/gallery/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Gallery</a>
-                    <a href="<?php echo baseUrl('pages/album/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Albums</a>
-                    <a href="<?php echo baseUrl('pages/profile/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Profile</a>
+                    <a href="<?php echo baseUrl('pages/gallery/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Galeri</a>
+                    <a href="<?php echo baseUrl('pages/album/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Album</a>
+                    <a href="<?php echo baseUrl('pages/profile/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Profil</a>
                     <div class="flex items-center space-x-3">
                         <span class="text-white/80">
-                            <strong class="text-white"><?php echo e($user['nama_lengkap']); ?></strong>
+                            <strong class="text-white"><?php echo $user['nama_lengkap']; ?></strong>
                             <?php if (isAdmin()): ?>
                                 <span class="ml-1 px-2 py-0.5 bg-yellow-400 text-yellow-900 text-xs font-bold rounded-full">Admin</span>
                             <?php endif; ?>
                         </span>
-                        <a href="<?php echo baseUrl('actions/auth/logout_action.php'); ?>" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl transition-all">Logout</a>
+                        <a href="<?php echo baseUrl('actions/auth/logout_action.php'); ?>" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl transition-all">Keluar</a>
                     </div>
                 </div>
             </div>
@@ -123,7 +123,7 @@ try {
                 </a>
                 <div class="flex-1">
                     <div class="flex items-center space-x-3">
-                        <h1 class="text-3xl font-bold text-gray-800"><?php echo e($album['NamaAlbum']); ?></h1>
+                        <h1 class="text-3xl font-bold text-gray-800"><?php echo $album['NamaAlbum']; ?></h1>
                         <?php if (!$album['is_public']): ?>
                             <span class="px-2 py-1 bg-gray-200 text-gray-600 text-xs font-medium rounded-lg flex items-center">
                                 <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -134,16 +134,16 @@ try {
                         <?php endif; ?>
                     </div>
                     <p class="text-gray-500 mt-1">
-                        by <?php echo e($album['NamaLengkap']); ?> • Created <?php echo formatDate($album['TanggalDibuat']); ?> • <?php echo count($photos); ?> photos
+                        oleh <?php echo $album['NamaLengkap']; ?> • Dibuat <?php echo formatDate($album['TanggalDibuat']); ?> • <?php echo count($photos); ?> foto
                     </p>
                     <?php if ($album['Deskripsi']): ?>
-                        <p class="text-gray-600 mt-2"><?php echo nl2br(e($album['Deskripsi'])); ?></p>
+                        <p class="text-gray-600 mt-2"><?php echo nl2br($album['Deskripsi']); ?></p>
                     <?php endif; ?>
                 </div>
                 <?php if ($isOwner): ?>
                     <div class="flex items-center space-x-2">
                         <a href="<?php echo baseUrl('pages/album/edit.php?id=' . $albumId); ?>" class="px-4 py-2 bg-blue-100 text-blue-600 rounded-xl hover:bg-blue-200 transition-all">Edit</a>
-                        <button onclick="confirmDelete(<?php echo $albumId; ?>, '<?php echo e(addslashes($album['NamaAlbum'])); ?>')" class="px-4 py-2 bg-red-100 text-red-600 rounded-xl hover:bg-red-200 transition-all">Delete</button>
+                        <button onclick="confirmDelete(<?php echo $albumId; ?>, '<?php echo addslashes($album['NamaAlbum']); ?>')" class="px-4 py-2 bg-red-100 text-red-600 rounded-xl hover:bg-red-200 transition-all">Hapus</button>
                     </div>
                 <?php endif; ?>
             </div>
@@ -168,14 +168,14 @@ try {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                     </svg>
                 </div>
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">No photos in this album</h3>
-                <p class="text-gray-500 mb-6">Add photos to this album to see them here.</p>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Tidak ada photo di album ini.</h3>
+                <p class="text-gray-500 mb-6">Tambahkan photo ke album ini untuk melihatnya di sini.</p>
                 <?php if ($isOwner): ?>
                     <a href="<?php echo baseUrl('pages/gallery/upload.php'); ?>" class="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-semibold rounded-xl hover:bg-purple-700 transition-all">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                         </svg>
-                        Upload Photos
+                        Upload Foto
                     </a>
                 <?php endif; ?>
             </div>
@@ -216,7 +216,7 @@ try {
     
     <script>
         function confirmDelete(albumId, albumName) {
-            if (confirm('Are you sure you want to delete "' + albumName + '"? Photos in this album will NOT be deleted, but will become orphaned.')) {
+            if (confirm('Apakah kamu yakin untuk menghapus album "' + albumName + '"? Foto di album ini akan tetap ada, tetapi akan menjadi foto yang tidak terhubung.')) {
                 window.location.href = '<?php echo baseUrl('actions/album/delete_action.php'); ?>?id=' + albumId;
             }
         }

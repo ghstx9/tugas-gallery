@@ -24,11 +24,11 @@ try {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Photo - TugasGallery</title>
+    <title>Unggah Foto - Aplikasi Gallery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -85,20 +85,20 @@ try {
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                         </div>
-                        <span class="text-white font-bold text-xl">TugasGallery</span>
+                        <span class="text-white font-bold text-xl">Aplikasi Gallery</span>
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="flex items-center space-x-4">
                     <a href="<?php echo baseUrl('pages/gallery/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
-                        Gallery
+                        Galeri
                     </a>
                     <a href="<?php echo baseUrl('pages/album/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
-                        Albums
+                        Album
                     </a>
                     <a href="<?php echo baseUrl('pages/profile/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
-                        Profile
+                        Profil
                     </a>
                     <div class="flex items-center space-x-3">
                         <span class="text-white/80">
@@ -108,7 +108,7 @@ try {
                             <?php endif; ?>
                         </span>
                         <a href="<?php echo baseUrl('actions/auth/logout_action.php'); ?>" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl transition-all">
-                            Logout
+                            Keluar
                         </a>
                     </div>
                 </div>
@@ -126,8 +126,8 @@ try {
                     </svg>
                 </a>
                 <div>
-                    <h1 class="text-3xl font-bold text-gray-800">Upload Photo</h1>
-                    <p class="text-gray-500 mt-1">Share a new photo with the community</p>
+                    <h1 class="text-3xl font-bold text-gray-800">Unggah Foto</h1>
+                    <p class="text-gray-500 mt-1">Bagikan foto baru dengan komunitas</p>
                 </div>
             </div>
         </div>
@@ -168,8 +168,8 @@ try {
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                         </div>
-                        <p class="text-gray-600 font-medium mb-1">Click to upload or drag and drop</p>
-                        <p class="text-gray-400 text-sm">JPG, PNG, GIF or WebP (max 5MB)</p>
+                        <p class="text-gray-600 font-medium mb-1">Klik untuk unggah atau seret dan lepas</p>
+                        <p class="text-gray-400 text-sm">JPG, PNG, GIF atau WebP (maks 5MB)</p>
                     </div>
                     
                     <!-- Preview State -->
@@ -177,7 +177,7 @@ try {
                         <img id="preview-image" src="" alt="Preview" class="max-h-64 mx-auto rounded-xl mb-4">
                         <p id="file-name" class="text-gray-600 font-medium"></p>
                         <button type="button" onclick="clearFile(event)" class="mt-2 text-red-500 hover:text-red-700 text-sm">
-                            Remove photo
+                            Hapus foto
                         </button>
                     </div>
                 </div>
@@ -185,7 +185,7 @@ try {
 
             <!-- Photo Title -->
             <div class="mb-6">
-                <label for="judul" class="block text-sm font-medium text-gray-700 mb-2">Title</label>
+                <label for="judul" class="block text-sm font-medium text-gray-700 mb-2">Judul</label>
                 <input 
                     type="text" 
                     id="judul" 
@@ -193,19 +193,19 @@ try {
                     required
                     maxlength="255"
                     class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none"
-                    placeholder="Give your photo a title"
+                    placeholder="Berikan judul untuk foto Anda"
                 >
             </div>
 
             <!-- Photo Description -->
             <div class="mb-6">
-                <label for="deskripsi" class="block text-sm font-medium text-gray-700 mb-2">Description <span class="text-gray-400">(Optional)</span></label>
+                <label for="deskripsi" class="block text-sm font-medium text-gray-700 mb-2">Deskripsi <span class="text-gray-400">(Opsional)</span></label>
                 <textarea 
                     id="deskripsi" 
                     name="deskripsi" 
                     rows="3"
                     class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none resize-none"
-                    placeholder="Add a description for your photo"
+                    placeholder="Tambahkan deskripsi untuk foto Anda"
                 ></textarea>
             </div>
 
@@ -217,27 +217,27 @@ try {
                     name="album_id"
                     class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none bg-white"
                 >
-                    <option value="">No album</option>
+                    <option value="">Tanpa album</option>
                     <?php foreach ($albums as $album): ?>
                         <option value="<?php echo $album['AlbumID']; ?>"><?php echo e($album['NamaAlbum']); ?></option>
                     <?php endforeach; ?>
                 </select>
                 <?php if (empty($albums)): ?>
-                    <p class="text-gray-400 text-sm mt-1">You haven't created any albums yet.</p>
+                    <p class="text-gray-400 text-sm mt-1">Anda belum membuat album.</p>
                 <?php endif; ?>
             </div>
 
             <!-- Privacy -->
             <div class="mb-8">
-                <label class="block text-sm font-medium text-gray-700 mb-3">Visibility</label>
+                <label class="block text-sm font-medium text-gray-700 mb-3">Visibilitas</label>
                 <div class="flex space-x-4">
                     <label class="flex items-center cursor-pointer">
                         <input type="radio" name="is_public" value="1" checked class="w-4 h-4 text-purple-600 focus:ring-purple-500">
-                        <span class="ml-2 text-gray-700">Public</span>
+                        <span class="ml-2 text-gray-700">Publik</span>
                     </label>
                     <label class="flex items-center cursor-pointer">
                         <input type="radio" name="is_public" value="0" class="w-4 h-4 text-purple-600 focus:ring-purple-500">
-                        <span class="ml-2 text-gray-700">Private</span>
+                        <span class="ml-2 text-gray-700">Privat</span>
                     </label>
                 </div>
             </div>
@@ -247,7 +247,7 @@ try {
                 type="submit" 
                 class="w-full py-4 px-6 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold rounded-xl hover:from-purple-600 hover:to-indigo-700 focus:ring-4 focus:ring-purple-200 transition-all transform hover:scale-[1.02] active:scale-[0.98]"
             >
-                Upload Photo
+                Unggah Foto
             </button>
         </form>
     </main>
@@ -286,14 +286,14 @@ try {
                 // Validate file type
                 const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
                 if (!validTypes.includes(file.type)) {
-                    alert('Please select a valid image file (JPG, PNG, GIF, or WebP)');
+                    alert('Silakan pilih file gambar yang valid (JPG, PNG, GIF, atau WebP)');
                     input.value = '';
                     return;
                 }
 
                 // Validate file size (5MB)
                 if (file.size > 5 * 1024 * 1024) {
-                    alert('File size must not exceed 5MB');
+                    alert('Ukuran file tidak boleh melebihi 5MB');
                     input.value = '';
                     return;
                 }

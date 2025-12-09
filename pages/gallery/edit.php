@@ -52,11 +52,11 @@ try {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Photo - TugasGallery</title>
+    <title>Edit Foto - Aplikasi Gallery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -99,13 +99,13 @@ try {
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                         </div>
-                        <span class="text-white font-bold text-xl">TugasGallery</span>
+                        <span class="text-white font-bold text-xl">Aplikasi Gallery</span>
                     </a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="<?php echo baseUrl('pages/gallery/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Gallery</a>
-                    <a href="<?php echo baseUrl('pages/album/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Albums</a>
-                    <a href="<?php echo baseUrl('pages/profile/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Profile</a>
+                    <a href="<?php echo baseUrl('pages/gallery/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Galeri</a>
+                    <a href="<?php echo baseUrl('pages/album/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Album</a>
+                    <a href="<?php echo baseUrl('pages/profile/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Profil</a>
                     <div class="flex items-center space-x-3">
                         <span class="text-white/80">
                             <strong class="text-white"><?php echo e($user['nama_lengkap']); ?></strong>
@@ -113,7 +113,7 @@ try {
                                 <span class="ml-1 px-2 py-0.5 bg-yellow-400 text-yellow-900 text-xs font-bold rounded-full">Admin</span>
                             <?php endif; ?>
                         </span>
-                        <a href="<?php echo baseUrl('actions/auth/logout_action.php'); ?>" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl transition-all">Logout</a>
+                        <a href="<?php echo baseUrl('actions/auth/logout_action.php'); ?>" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl transition-all">Keluar</a>
                     </div>
                 </div>
             </div>
@@ -130,8 +130,8 @@ try {
                     </svg>
                 </a>
                 <div>
-                    <h1 class="text-3xl font-bold text-gray-800">Edit Photo</h1>
-                    <p class="text-gray-500 mt-1">Update photo details</p>
+                    <h1 class="text-3xl font-bold text-gray-800">Edit Foto</h1>
+                    <p class="text-gray-500 mt-1">Perbarui detail foto</p>
                 </div>
             </div>
         </div>
@@ -166,7 +166,7 @@ try {
                     
                     <!-- Photo Title -->
                     <div class="mb-6">
-                        <label for="judul" class="block text-sm font-medium text-gray-700 mb-2">Title</label>
+                        <label for="judul" class="block text-sm font-medium text-gray-700 mb-2">Judul</label>
                         <input 
                             type="text" 
                             id="judul" 
@@ -180,7 +180,7 @@ try {
 
                     <!-- Photo Description -->
                     <div class="mb-6">
-                        <label for="deskripsi" class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                        <label for="deskripsi" class="block text-sm font-medium text-gray-700 mb-2">Deskripsi</label>
                         <textarea 
                             id="deskripsi" 
                             name="deskripsi" 
@@ -197,7 +197,7 @@ try {
                             name="album_id"
                             class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none bg-white"
                         >
-                            <option value="">No album</option>
+                            <option value="">Tanpa album</option>
                             <?php foreach ($albums as $album): ?>
                                 <option value="<?php echo $album['AlbumID']; ?>" <?php echo $photo['AlbumID'] == $album['AlbumID'] ? 'selected' : ''; ?>>
                                     <?php echo e($album['NamaAlbum']); ?>
@@ -208,15 +208,15 @@ try {
 
                     <!-- Privacy -->
                     <div class="mb-8">
-                        <label class="block text-sm font-medium text-gray-700 mb-3">Visibility</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-3">Visibilitas</label>
                         <div class="flex space-x-4">
                             <label class="flex items-center cursor-pointer">
                                 <input type="radio" name="is_public" value="1" <?php echo $photo['is_public'] ? 'checked' : ''; ?> class="w-4 h-4 text-purple-600 focus:ring-purple-500">
-                                <span class="ml-2 text-gray-700">Public</span>
+                                <span class="ml-2 text-gray-700">Publik</span>
                             </label>
                             <label class="flex items-center cursor-pointer">
                                 <input type="radio" name="is_public" value="0" <?php echo !$photo['is_public'] ? 'checked' : ''; ?> class="w-4 h-4 text-purple-600 focus:ring-purple-500">
-                                <span class="ml-2 text-gray-700">Private</span>
+                                <span class="ml-2 text-gray-700">Privat</span>
                             </label>
                         </div>
                     </div>
@@ -227,23 +227,23 @@ try {
                             type="submit" 
                             class="flex-1 py-3 px-6 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold rounded-xl hover:from-purple-600 hover:to-indigo-700 transition-all"
                         >
-                            Save Changes
+                            Simpan Perubahan
                         </button>
                         <a 
                             href="<?php echo baseUrl('pages/gallery/photo.php?id=' . $photoId); ?>" 
                             class="py-3 px-6 bg-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-300 transition-all"
                         >
-                            Cancel
+                            Batal
                         </a>
                     </div>
                 </form>
                 
                 <!-- Delete Photo -->
                 <div class="mt-6 pt-6 border-t">
-                    <h3 class="text-sm font-medium text-gray-700 mb-2">Danger Zone</h3>
-                    <p class="text-sm text-gray-500 mb-3">Once you delete a photo, there is no going back. Please be certain.</p>
+                    <h3 class="text-sm font-medium text-gray-700 mb-2">Zona Bahaya</h3>
+                    <p class="text-sm text-gray-500 mb-3">Setelah foto dihapus, tidak dapat dikembalikan. Harap pastikan.</p>
                     <button onclick="confirmDelete(<?php echo $photoId; ?>)" class="w-full px-4 py-2 bg-red-100 text-red-600 rounded-xl hover:bg-red-200 transition-all font-medium">
-                        Delete Photo
+                        Hapus Foto
                     </button>
                 </div>
             </div>
@@ -252,7 +252,7 @@ try {
     
     <script>
         function confirmDelete(photoId) {
-            if (confirm('Are you sure you want to delete this photo? This action cannot be undone.')) {
+            if (confirm('Apakah Anda yakin ingin menghapus foto ini? Tindakan ini tidak dapat dibatalkan.')) {
                 window.location.href = '<?php echo baseUrl('actions/photo/delete_action.php'); ?>?id=' + photoId;
             }
         }

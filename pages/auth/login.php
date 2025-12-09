@@ -12,11 +12,11 @@ redirectIfLoggedIn();
 $flash = getFlash();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - TugasGallery</title>
+    <title>Masuk - Aplikasi Gallery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -60,8 +60,8 @@ $flash = getFlash();
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
             </div>
-            <h1 class="text-2xl font-bold text-gray-800">Welcome Back</h1>
-            <p class="text-gray-500 mt-2">Sign in to your TugasGallery account</p>
+            <h1 class="text-2xl font-bold text-gray-800">Selamat Datang Kembali</h1>
+            <p class="text-gray-500 mt-2">Masuk ke akun Aplikasi Gallery Anda</p>
         </div>
 
         <!-- Flash Messages -->
@@ -77,20 +77,20 @@ $flash = getFlash();
             
             <!-- Username/Email -->
             <div>
-                <label for="username" class="block text-sm font-medium text-gray-700 mb-2">Username or Email</label>
+                <label for="username" class="block text-sm font-medium text-gray-700 mb-2">Username atau Email</label>
                 <input 
                     type="text" 
                     id="username" 
                     name="username" 
                     required
                     class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none"
-                    placeholder="Enter your username or email"
+                    placeholder="Masukkan username atau email Anda"
                 >
             </div>
 
             <!-- Password -->
             <div>
-                <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Kata Sandi</label>
                 <div class="relative">
                     <input 
                         type="password" 
@@ -98,7 +98,7 @@ $flash = getFlash();
                         name="password" 
                         required
                         class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none pr-12"
-                        placeholder="Enter your password"
+                        placeholder="Masukkan kata sandi Anda"
                     >
                     <button 
                         type="button" 
@@ -118,16 +118,16 @@ $flash = getFlash();
                 type="submit" 
                 class="w-full py-3 px-4 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold rounded-xl hover:from-purple-600 hover:to-indigo-700 focus:ring-4 focus:ring-purple-200 transition-all transform hover:scale-[1.02] active:scale-[0.98]"
             >
-                Sign In
+                Masuk
             </button>
         </form>
 
         <!-- Register Link -->
         <div class="mt-8 text-center">
             <p class="text-gray-500">
-                Don't have an account? 
+                Belum punya akun? 
                 <a href="<?php echo baseUrl('pages/auth/register.php'); ?>" class="text-purple-600 font-semibold hover:text-purple-700 transition-colors">
-                    Create one
+                    Daftar sekarang
                 </a>
             </p>
         </div>
@@ -135,7 +135,7 @@ $flash = getFlash();
         <!-- Back to Home -->
         <div class="mt-4 text-center">
             <a href="<?php echo baseUrl('index.php'); ?>" class="text-gray-400 hover:text-gray-600 text-sm transition-colors">
-                ← Back to Home
+                ← Kembali ke Beranda
             </a>
         </div>
     </div>

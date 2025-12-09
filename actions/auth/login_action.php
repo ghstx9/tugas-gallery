@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Validate CSRF token
 if (!validateCsrfToken($_POST['csrf_token'] ?? '')) {
-    setFlash('error', 'Invalid request. Please try again.');
+    setFlash('error', 'Permintaan tidak valid. Silakan coba lagi.');
     redirect(baseUrl('pages/auth/login.php'));
 }
 
@@ -25,7 +25,7 @@ $password = $_POST['password'] ?? '';
 
 // Validate input
 if (empty($username) || empty($password)) {
-    setFlash('error', 'Please enter both username/email and password.');
+    setFlash('error', 'Silakan masukkan username/email dan kata sandi.');
     redirect(baseUrl('pages/auth/login.php'));
 }
 
@@ -46,7 +46,7 @@ try {
     
     // Verify user exists and password is correct
     if (!$user || !verifyPassword($password, $user['Password'])) {
-        setFlash('error', 'Invalid username/email or password.');
+        setFlash('error', 'Username/email atau kata sandi tidak valid.');
         redirect(baseUrl('pages/auth/login.php'));
     }
     
@@ -54,7 +54,7 @@ try {
     setUserSession($user);
     
     // Success message
-    setFlash('success', 'Welcome back, ' . e($user['NamaLengkap']) . '!');
+    setFlash('success', 'Selamat datang kembali, ' . e($user['NamaLengkap']) . '!');
     
     // Redirect to intended page or gallery
     $redirectUrl = getRedirectAfterLogin();
@@ -63,6 +63,6 @@ try {
 } catch (PDOException $e) {
     // Log error in production
     error_log("Login error: " . $e->getMessage());
-    setFlash('error', 'An error occurred. Please try again later.');
+    setFlash('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     redirect(baseUrl('pages/auth/login.php'));
 }

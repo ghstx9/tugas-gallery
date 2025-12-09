@@ -28,11 +28,11 @@ $oldInput = $_SESSION['old_input'] ?? [];
 unset($_SESSION['old_input']);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Profile - TugasGallery</title>
+    <title>Edit Profil - Aplikasi Gallery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .gradient-bg {
@@ -52,13 +52,13 @@ unset($_SESSION['old_input']);
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                         </div>
-                        <span class="text-white font-bold text-xl">TugasGallery</span>
+                        <span class="text-white font-bold text-xl">Aplikasi Gallery</span>
                     </a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="<?php echo baseUrl('pages/gallery/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Gallery</a>
-                    <a href="<?php echo baseUrl('pages/album/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Albums</a>
-                    <a href="<?php echo baseUrl('pages/profile/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Profile</a>
+                    <a href="<?php echo baseUrl('pages/gallery/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Galeri</a>
+                    <a href="<?php echo baseUrl('pages/album/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Album</a>
+                    <a href="<?php echo baseUrl('pages/profile/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Profil</a>
                     <div class="flex items-center space-x-3">
                         <span class="text-white/80">
                             <strong class="text-white"><?php echo e($user['nama_lengkap']); ?></strong>
@@ -66,7 +66,7 @@ unset($_SESSION['old_input']);
                                 <span class="ml-1 px-2 py-0.5 bg-yellow-400 text-yellow-900 text-xs font-bold rounded-full">Admin</span>
                             <?php endif; ?>
                         </span>
-                        <a href="<?php echo baseUrl('actions/auth/logout_action.php'); ?>" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl transition-all">Logout</a>
+                        <a href="<?php echo baseUrl('actions/auth/logout_action.php'); ?>" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl transition-all">Keluar</a>
                     </div>
                 </div>
             </div>
@@ -83,8 +83,8 @@ unset($_SESSION['old_input']);
                     </svg>
                 </a>
                 <div>
-                    <h1 class="text-3xl font-bold text-gray-800">Edit Profile</h1>
-                    <p class="text-gray-500 mt-1">Update your account information</p>
+                    <h1 class="text-3xl font-bold text-gray-800">Edit Profil</h1>
+                    <p class="text-gray-500 mt-1">Perbarui informasi akun Anda</p>
                 </div>
             </div>
         </div>
@@ -105,7 +105,7 @@ unset($_SESSION['old_input']);
             <?php echo csrfField(); ?>
             
             <div class="mb-6">
-                <label for="nama_lengkap" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                <label for="nama_lengkap" class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
                 <input type="text" id="nama_lengkap" name="nama_lengkap" required maxlength="255" value="<?php echo e($oldInput['nama_lengkap'] ?? $userInfo['NamaLengkap'] ?? ''); ?>" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none">
             </div>
             
@@ -115,36 +115,36 @@ unset($_SESSION['old_input']);
             </div>
             
             <div class="mb-6">
-                <label for="alamat" class="block text-sm font-medium text-gray-700 mb-2">Address <span class="text-gray-400">(Optional)</span></label>
+                <label for="alamat" class="block text-sm font-medium text-gray-700 mb-2">Alamat <span class="text-gray-400">(Opsional)</span></label>
                 <textarea id="alamat" name="alamat" rows="3" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none resize-none"><?php echo e($oldInput['alamat'] ?? $userInfo['Alamat'] ?? ''); ?></textarea>
             </div>
             
             <hr class="my-8">
             
-            <h3 class="text-lg font-semibold text-gray-800 mb-4">Change Password</h3>
-            <p class="text-sm text-gray-500 mb-4">Leave blank to keep your current password.</p>
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">Ubah Kata Sandi</h3>
+            <p class="text-sm text-gray-500 mb-4">Kosongkan jika ingin mempertahankan kata sandi saat ini.</p>
             
             <div class="mb-6">
-                <label for="current_password" class="block text-sm font-medium text-gray-700 mb-2">Current Password</label>
+                <label for="current_password" class="block text-sm font-medium text-gray-700 mb-2">Kata Sandi Saat Ini</label>
                 <input type="password" id="current_password" name="current_password" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none">
             </div>
             
             <div class="mb-6">
-                <label for="new_password" class="block text-sm font-medium text-gray-700 mb-2">New Password</label>
+                <label for="new_password" class="block text-sm font-medium text-gray-700 mb-2">Kata Sandi Baru</label>
                 <input type="password" id="new_password" name="new_password" minlength="6" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none">
             </div>
             
             <div class="mb-8">
-                <label for="confirm_password" class="block text-sm font-medium text-gray-700 mb-2">Confirm New Password</label>
+                <label for="confirm_password" class="block text-sm font-medium text-gray-700 mb-2">Konfirmasi Kata Sandi Baru</label>
                 <input type="password" id="confirm_password" name="confirm_password" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none">
             </div>
             
             <div class="flex space-x-4">
                 <button type="submit" class="flex-1 py-3 px-6 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold rounded-xl hover:from-purple-600 hover:to-indigo-700 transition-all">
-                    Save Changes
+                    Simpan Perubahan
                 </button>
                 <a href="<?php echo baseUrl('pages/profile/index.php'); ?>" class="py-3 px-6 bg-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-300 transition-all text-center">
-                    Cancel
+                    Batal
                 </a>
             </div>
         </form>

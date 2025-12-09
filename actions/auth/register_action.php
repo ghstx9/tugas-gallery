@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Validate CSRF token
 if (!validateCsrfToken($_POST['csrf_token'] ?? '')) {
-    setFlash('error', 'Invalid request. Please try again.');
+    setFlash('error', 'Permintaan tidak valid. Silakan coba lagi.');
     redirect(baseUrl('pages/auth/register.php'));
 }
 
@@ -40,37 +40,37 @@ $errors = [];
 
 // Username validation
 if (empty($username)) {
-    $errors[] = 'Username is required.';
+    $errors[] = 'Username wajib diisi.';
 } elseif (strlen($username) < 3) {
-    $errors[] = 'Username must be at least 3 characters.';
+    $errors[] = 'Username minimal 3 karakter.';
 } elseif (strlen($username) > 50) {
-    $errors[] = 'Username must not exceed 50 characters.';
+    $errors[] = 'Username tidak boleh melebihi 50 karakter.';
 } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', $username)) {
-    $errors[] = 'Username can only contain letters, numbers, and underscores.';
+    $errors[] = 'Username hanya boleh berisi huruf, angka, dan garis bawah.';
 }
 
 // Email validation
 if (empty($email)) {
-    $errors[] = 'Email is required.';
+    $errors[] = 'Email wajib diisi.';
 } elseif (!isValidEmail($email)) {
-    $errors[] = 'Please enter a valid email address.';
+    $errors[] = 'Silakan masukkan alamat email yang valid.';
 }
 
 // Full name validation
 if (empty($namaLengkap)) {
-    $errors[] = 'Full name is required.';
+    $errors[] = 'Nama lengkap wajib diisi.';
 }
 
 // Password validation
 if (empty($password)) {
-    $errors[] = 'Password is required.';
+    $errors[] = 'Kata sandi wajib diisi.';
 } elseif (!isValidPassword($password)) {
-    $errors[] = 'Password must be at least 6 characters.';
+    $errors[] = 'Kata sandi minimal 6 karakter.';
 }
 
 // Password confirmation
 if ($password !== $passwordConfirm) {
-    $errors[] = 'Passwords do not match.';
+    $errors[] = 'Kata sandi tidak cocok.';
 }
 
 // If there are validation errors, redirect back
@@ -86,7 +86,7 @@ try {
     $stmt = $pdo->prepare("SELECT UserID FROM gallery_user WHERE Username = ?");
     $stmt->execute([$username]);
     if ($stmt->fetch()) {
-        setFlash('error', 'Username is already taken. Please choose another.');
+        setFlash('error', 'Username sudah digunakan. Silakan pilih yang lain.');
         redirect(baseUrl('pages/auth/register.php'));
     }
     
@@ -94,7 +94,7 @@ try {
     $stmt = $pdo->prepare("SELECT UserID FROM gallery_user WHERE Email = ?");
     $stmt->execute([$email]);
     if ($stmt->fetch()) {
-        setFlash('error', 'Email is already registered. Please use another email or login.');
+        setFlash('error', 'Email sudah terdaftar. Silakan gunakan email lain atau masuk.');
         redirect(baseUrl('pages/auth/register.php'));
     }
     
@@ -119,12 +119,12 @@ try {
     unset($_SESSION['old_input']);
     
     // Success message
-    setFlash('success', 'Registration successful! Please login with your credentials.');
+    setFlash('success', 'Pendaftaran berhasil! Silakan masuk dengan kredensial Anda.');
     redirect(baseUrl('pages/auth/login.php'));
     
 } catch (PDOException $e) {
     // Log error in production
     error_log("Registration error: " . $e->getMessage());
-    setFlash('error', 'An error occurred. Please try again later.');
+    setFlash('error', 'Terjadi kesalahan. Silakan coba lagi nanti.');
     redirect(baseUrl('pages/auth/register.php'));
 }

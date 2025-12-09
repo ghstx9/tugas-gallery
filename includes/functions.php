@@ -89,13 +89,13 @@ function validateImageUpload(array $file, int $maxSize = 5242880): array {
     
     // Check for upload errors
     if ($file['error'] !== UPLOAD_ERR_OK) {
-        $errors[] = 'File upload failed.';
+        $errors[] = 'Unggah file gagal.';
         return $errors;
     }
     
     // Check file size (default 5MB)
     if ($file['size'] > $maxSize) {
-        $errors[] = 'File size must not exceed ' . ($maxSize / 1024 / 1024) . 'MB.';
+        $errors[] = 'Ukuran file tidak boleh melebihi ' . ($maxSize / 1024 / 1024) . ' MB.';
     }
     
     // Check MIME type
@@ -105,7 +105,7 @@ function validateImageUpload(array $file, int $maxSize = 5242880): array {
     finfo_close($finfo);
     
     if (!in_array($mimeType, $allowedTypes)) {
-        $errors[] = 'Only JPG, PNG, GIF, and WebP images are allowed.';
+        $errors[] = 'Hanya gambar JPG, PNG, GIF, dan WebP yang diperbolehkan.';
     }
     
     // Check extension
@@ -113,7 +113,7 @@ function validateImageUpload(array $file, int $maxSize = 5242880): array {
     $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
     
     if (!in_array($extension, $allowedExtensions)) {
-        $errors[] = 'Invalid file extension.';
+        $errors[] = 'Ekstensi file tidak valid.';
     }
     
     return $errors;
@@ -155,16 +155,16 @@ function timeAgo(string $datetime): string {
     $diff = time() - $time;
     
     if ($diff < 60) {
-        return 'Just now';
+        return 'Baru saja';
     } elseif ($diff < 3600) {
         $mins = floor($diff / 60);
-        return $mins . ' minute' . ($mins > 1 ? 's' : '') . ' ago';
+        return $mins . ' menit' . ($mins > 1 ? '' : '') . ' yang lalu';
     } elseif ($diff < 86400) {
         $hours = floor($diff / 3600);
-        return $hours . ' hour' . ($hours > 1 ? 's' : '') . ' ago';
+        return $hours . ' jam' . ($hours > 1 ? '' : '') . ' yang lalu';
     } elseif ($diff < 604800) {
         $days = floor($diff / 86400);
-        return $days . ' day' . ($days > 1 ? 's' : '') . ' ago';
+        return $days . ' hari' . ($days > 1 ? '' : '') . ' yang lalu';
     } else {
         return formatDate($datetime);
     }
