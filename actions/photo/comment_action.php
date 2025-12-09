@@ -31,7 +31,7 @@ if ($action === 'delete') {
     $photoId = isset($_POST['photo_id']) ? (int)$_POST['photo_id'] : 0;
     
     if ($commentId <= 0) {
-        setFlash('error', 'Invalid comment.');
+        setFlash('error', 'Komentar tidak valid.');
         redirect(baseUrl('pages/gallery/photo.php?id=' . $photoId));
     }
     
@@ -44,12 +44,12 @@ if ($action === 'delete') {
         $comment = $stmt->fetch();
         
         if (!$comment) {
-            setFlash('error', 'Comment not found.');
+            setFlash('error', 'Komentar tidak ditemukan.');
             redirect(baseUrl('pages/gallery/photo.php?id=' . $photoId));
         }
         
         if ($comment['UserID'] != getCurrentUserId() && !isAdmin()) {
-            setFlash('error', 'You do not have permission to delete this comment.');
+            setFlash('error', 'Anda tidak memiliki izin untuk menghapus komentar ini.');
             redirect(baseUrl('pages/gallery/photo.php?id=' . $photoId));
         }
         
@@ -57,12 +57,12 @@ if ($action === 'delete') {
         $deleteStmt = $pdo->prepare("DELETE FROM gallery_komentarfoto WHERE KomentarID = ?");
         $deleteStmt->execute([$commentId]);
         
-        setFlash('success', 'Comment deleted successfully.');
+        setFlash('success', 'Komentar berhasil dihapus.');
         redirect(baseUrl('pages/gallery/photo.php?id=' . $photoId));
         
     } catch (PDOException $e) {
         error_log("Delete comment error: " . $e->getMessage());
-        setFlash('error', 'An error occurred. Please try again.');
+        setFlash('error', 'Terjadi kesalahan. Silahkan coba lagi.');
         redirect(baseUrl('pages/gallery/photo.php?id=' . $photoId));
     }
     
@@ -72,17 +72,17 @@ if ($action === 'delete') {
     $comment = trim($_POST['comment'] ?? '');
     
     if ($photoId <= 0) {
-        setFlash('error', 'Invalid photo.');
+        setFlash('error', 'Foto tidak ditemukan.');
         redirect(baseUrl('pages/gallery/index.php'));
     }
     
     if (empty($comment)) {
-        setFlash('error', 'Please enter a comment.');
+        setFlash('error', 'Silahkan masukkan komentar.');
         redirect(baseUrl('pages/gallery/photo.php?id=' . $photoId));
     }
     
     if (strlen($comment) > 1000) {
-        setFlash('error', 'Comment is too long. Maximum 1000 characters.');
+        setFlash('error', 'Komentar terlalu panjang. Maksimum 1000 karakter.');
         redirect(baseUrl('pages/gallery/photo.php?id=' . $photoId));
     }
     
@@ -93,7 +93,7 @@ if ($action === 'delete') {
         $photoStmt = $pdo->prepare("SELECT FotoID FROM gallery_foto WHERE FotoID = ?");
         $photoStmt->execute([$photoId]);
         if (!$photoStmt->fetch()) {
-            setFlash('error', 'Photo not found.');
+            setFlash('error', 'Foto tidak ditemukan.');
             redirect(baseUrl('pages/gallery/index.php'));
         }
         
@@ -104,12 +104,12 @@ if ($action === 'delete') {
         ");
         $stmt->execute([$photoId, getCurrentUserId(), $comment]);
         
-        setFlash('success', 'Comment added successfully.');
+        setFlash('success', 'Komentar berhasil ditambahkan.');
         redirect(baseUrl('pages/gallery/photo.php?id=' . $photoId));
         
     } catch (PDOException $e) {
         error_log("Add comment error: " . $e->getMessage());
-        setFlash('error', 'An error occurred. Please try again.');
+        setFlash('error', 'Terjadi kesalahan. Silahkan coba lagi.');
         redirect(baseUrl('pages/gallery/photo.php?id=' . $photoId));
     }
 }

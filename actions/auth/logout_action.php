@@ -14,7 +14,7 @@ destroySession();
 initSession();
 
 // Set success message
-setFlash('success', 'You have been logged out successfully.');
+setFlash('success', 'Anda berhasil logout.');
 
 // Redirect to login page
 redirect('/tugasgallery/pages/auth/login.php');

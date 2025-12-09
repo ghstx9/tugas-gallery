@@ -38,23 +38,23 @@ $_SESSION['old_input'] = [
 
 // Validate name
 if (empty($namaLengkap)) {
-    setFlash('error', 'Please enter your full name.');
+    setFlash('error', 'Silahkan masukkan nama lengkap.');
     redirect(baseUrl('pages/profile/edit.php'));
 }
 
 if (strlen($namaLengkap) > 255) {
-    setFlash('error', 'Name must not exceed 255 characters.');
+    setFlash('error', 'Nama tidak boleh melebihi 255 karakter.');
     redirect(baseUrl('pages/profile/edit.php'));
 }
 
 // Validate email
 if (empty($email)) {
-    setFlash('error', 'Please enter your email address.');
+    setFlash('error', 'Silahkan masukkan alamat email.');
     redirect(baseUrl('pages/profile/edit.php'));
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    setFlash('error', 'Please enter a valid email address.');
+    setFlash('error', 'Silahkan masukkan alamat email yang valid.');
     redirect(baseUrl('pages/profile/edit.php'));
 }
 
@@ -72,7 +72,7 @@ try {
         $emailStmt = $pdo->prepare("SELECT UserID FROM gallery_user WHERE Email = ? AND UserID != ?");
         $emailStmt->execute([$email, $userId]);
         if ($emailStmt->fetch()) {
-            setFlash('error', 'Email is already taken by another user.');
+            setFlash('error', 'Email sudah digunakan oleh pengguna lain.');
             redirect(baseUrl('pages/profile/edit.php'));
         }
     }
@@ -84,23 +84,23 @@ try {
     if (!empty($newPassword)) {
         // Validate current password
         if (empty($currentPassword)) {
-            setFlash('error', 'Please enter your current password to change it.');
+            setFlash('error', 'Silahkan masukkan password Anda untuk mengubahnya.');
             redirect(baseUrl('pages/profile/edit.php'));
         }
         
         if (!password_verify($currentPassword, $currentUser['Password'])) {
-            setFlash('error', 'Current password is incorrect.');
+            setFlash('error', 'Password saat ini tidak sesuai.');
             redirect(baseUrl('pages/profile/edit.php'));
         }
         
         // Validate new password
         if (strlen($newPassword) < 6) {
-            setFlash('error', 'New password must be at least 6 characters.');
+            setFlash('error', 'Password baru harus memiliki minimal 6 karakter.');
             redirect(baseUrl('pages/profile/edit.php'));
         }
         
         if ($newPassword !== $confirmPassword) {
-            setFlash('error', 'New passwords do not match.');
+            setFlash('error', 'Password baru tidak sesuai.');
             redirect(baseUrl('pages/profile/edit.php'));
         }
         
@@ -130,11 +130,11 @@ try {
     // Clear old input
     unset($_SESSION['old_input']);
     
-    setFlash('success', 'Profile updated successfully!');
+    setFlash('success', 'Profile berhasil diperbarui!');
     redirect(baseUrl('pages/profile/index.php'));
     
 } catch (PDOException $e) {
     error_log("Update profile error: " . $e->getMessage());
-    setFlash('error', 'An error occurred. Please try again.');
+    setFlash('error', 'Terjadi kesalahan. Silahkan coba lagi.');
     redirect(baseUrl('pages/profile/edit.php'));
 }

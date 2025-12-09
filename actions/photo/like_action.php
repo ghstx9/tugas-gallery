@@ -13,19 +13,19 @@ header('Content-Type: application/json');
 
 // Require authentication
 if (!isLoggedIn()) {
-    echo json_encode(['success' => false, 'message' => 'Please login to like photos.']);
+    echo json_encode(['success' => false, 'message' => 'Silahkan login untuk memberikan like.']);
     exit;
 }
 
 // Only accept POST requests
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
+    echo json_encode(['success' => false, 'message' => 'Permintaan tidak valid.']);
     exit;
 }
 
 // Validate CSRF token
 if (!validateCsrfToken($_POST['csrf_token'] ?? '')) {
-    echo json_encode(['success' => false, 'message' => 'Invalid request.']);
+    echo json_encode(['success' => false, 'message' => 'Permintaan tidak valid.']);
     exit;
 }
 
@@ -33,7 +33,7 @@ if (!validateCsrfToken($_POST['csrf_token'] ?? '')) {
 $photoId = isset($_POST['photo_id']) ? (int)$_POST['photo_id'] : 0;
 
 if ($photoId <= 0) {
-    echo json_encode(['success' => false, 'message' => 'Invalid photo.']);
+    echo json_encode(['success' => false, 'message' => 'Foto tidak ditemukan.']);
     exit;
 }
 
@@ -45,7 +45,7 @@ try {
     $photoStmt = $pdo->prepare("SELECT FotoID FROM gallery_foto WHERE FotoID = ?");
     $photoStmt->execute([$photoId]);
     if (!$photoStmt->fetch()) {
-        echo json_encode(['success' => false, 'message' => 'Photo not found.']);
+        echo json_encode(['success' => false, 'message' => 'Foto tidak ditemukan.']);
         exit;
     }
     
@@ -79,5 +79,5 @@ try {
     
 } catch (PDOException $e) {
     error_log("Like action error: " . $e->getMessage());
-    echo json_encode(['success' => false, 'message' => 'An error occurred.']);
+    echo json_encode(['success' => false, 'message' => 'Terjadi kesalahan.']);
 }

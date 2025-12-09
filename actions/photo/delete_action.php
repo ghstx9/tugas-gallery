@@ -28,14 +28,14 @@ try {
     $photo = $stmt->fetch();
     
     if (!$photo) {
-        setFlash('error', 'Photo not found.');
+        setFlash('error', 'Foto tidak ditemukan.');
         redirect(baseUrl('pages/gallery/index.php'));
     }
     
     // Check if user is owner or admin
     $isOwner = $photo['UserID'] == getCurrentUserId();
     if (!$isOwner && !isAdmin()) {
-        setFlash('error', 'You do not have permission to delete this photo.');
+        setFlash('error', 'Anda tidak memiliki izin untuk menghapus foto ini.');
         redirect(baseUrl('pages/gallery/photo.php?id=' . $photoId));
     }
     
@@ -49,11 +49,11 @@ try {
         unlink($filePath);
     }
     
-    setFlash('success', 'Photo deleted successfully.');
+    setFlash('success', 'Foto berhasil dihapus.');
     redirect(baseUrl('pages/gallery/index.php'));
     
 } catch (PDOException $e) {
     error_log("Delete photo error: " . $e->getMessage());
-    setFlash('error', 'An error occurred. Please try again.');
+    setFlash('error', 'Terjadi kesalahan. Silahkan coba lagi.');
     redirect(baseUrl('pages/gallery/index.php'));
 }

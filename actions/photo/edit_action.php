@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Validate CSRF token
 if (!validateCsrfToken($_POST['csrf_token'] ?? '')) {
-    setFlash('error', 'Invalid request. Please try again.');
+    setFlash('error', 'Permintaan tidak valid. Silahkan coba lagi.');
     redirect(baseUrl('pages/gallery/index.php'));
 }
 
@@ -30,18 +30,18 @@ $albumId = !empty($_POST['album_id']) ? (int)$_POST['album_id'] : null;
 $isPublic = isset($_POST['is_public']) ? (int)$_POST['is_public'] === 1 : true;
 
 if ($photoId <= 0) {
-    setFlash('error', 'Invalid photo.');
+    setFlash('error', 'Foto tidak ditemukan.');
     redirect(baseUrl('pages/gallery/index.php'));
 }
 
 // Validate title
 if (empty($judul)) {
-    setFlash('error', 'Please enter a title for your photo.');
+    setFlash('error', 'Silahkan masukkan judul untuk foto.');
     redirect(baseUrl('pages/gallery/edit.php?id=' . $photoId));
 }
 
 if (strlen($judul) > 255) {
-    setFlash('error', 'Title must not exceed 255 characters.');
+    setFlash('error', 'Judul tidak boleh melebihi 255 karakter.');
     redirect(baseUrl('pages/gallery/edit.php?id=' . $photoId));
 }
 
@@ -54,13 +54,13 @@ try {
     $photo = $stmt->fetch();
     
     if (!$photo) {
-        setFlash('error', 'Photo not found.');
+        setFlash('error', 'Foto tidak ditemukan.');
         redirect(baseUrl('pages/gallery/index.php'));
     }
     
     // Check if user can edit this photo (owner or admin)
     if ($photo['UserID'] != getCurrentUserId() && !isAdmin()) {
-        setFlash('error', 'You do not have permission to edit this photo.');
+        setFlash('error', 'Anda tidak memiliki izin untuk mengedit foto ini.');
         redirect(baseUrl('pages/gallery/photo.php?id=' . $photoId));
     }
     
@@ -69,7 +69,7 @@ try {
         $albumStmt = $pdo->prepare("SELECT AlbumID FROM gallery_album WHERE AlbumID = ? AND UserID = ?");
         $albumStmt->execute([$albumId, $photo['UserID']]);
         if (!$albumStmt->fetch()) {
-            setFlash('error', 'Invalid album selected.');
+            setFlash('error', 'Album tidak valid.');
             redirect(baseUrl('pages/gallery/edit.php?id=' . $photoId));
         }
     }
@@ -89,11 +89,11 @@ try {
         $photoId
     ]);
     
-    setFlash('success', 'Photo updated successfully.');
+    setFlash('success', 'Foto berhasil diedit.');
     redirect(baseUrl('pages/gallery/photo.php?id=' . $photoId));
     
 } catch (PDOException $e) {
-    error_log("Edit photo error: " . $e->getMessage());
-    setFlash('error', 'An error occurred. Please try again.');
+    error_log("Edit foto error: " . $e->getMessage());
+    setFlash('error', 'Terjadi kesalahan. Silahkan coba lagi.');
     redirect(baseUrl('pages/gallery/edit.php?id=' . $photoId));
 }
