@@ -87,9 +87,18 @@ $user = getCurrentUser();
                         <a href="<?php echo baseUrl('pages/gallery/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
                             Gallery
                         </a>
+                        <a href="<?php echo baseUrl('pages/gallery/upload.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
+                            Upload
+                        </a>
+                        <a href="<?php echo baseUrl('pages/album/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
+                            Albums
+                        </a>
+                        <a href="<?php echo baseUrl('pages/profile/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
+                            Profile
+                        </a>
                         <div class="flex items-center space-x-3">
                             <span class="text-white/80">
-                                Hello, <strong class="text-white"><?php echo e($user['nama_lengkap']); ?></strong>
+                                <strong class="text-white"><?php echo e($user['nama_lengkap']); ?></strong>
                                 <?php if (isAdmin()): ?>
                                     <span class="ml-1 px-2 py-0.5 bg-yellow-400 text-yellow-900 text-xs font-bold rounded-full">Admin</span>
                                 <?php endif; ?>

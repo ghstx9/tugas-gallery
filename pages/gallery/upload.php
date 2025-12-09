@@ -97,6 +97,12 @@ try {
                     <a href="<?php echo baseUrl('pages/gallery/upload.php'); ?>" class="text-white px-3 py-2 rounded-lg bg-white/20">
                         Upload
                     </a>
+                    <a href="<?php echo baseUrl('pages/album/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
+                        Albums
+                    </a>
+                    <a href="<?php echo baseUrl('pages/profile/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
+                        Profile
+                    </a>
                     <div class="flex items-center space-x-3">
                         <span class="text-white/80">
                             <strong class="text-white"><?php echo e($user['nama_lengkap']); ?></strong>
