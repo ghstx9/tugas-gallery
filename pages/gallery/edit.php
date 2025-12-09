@@ -238,7 +238,8 @@ try {
                     </div>
                 </form>
                 
-                <!-- Delete Photo -->
+                <!-- Delete Photo (Admin Only) -->
+                <?php if (isAdmin()): ?>
                 <div class="mt-6 pt-6 border-t">
                     <h3 class="text-sm font-medium text-gray-700 mb-2">Zona Bahaya</h3>
                     <p class="text-sm text-gray-500 mb-3">Setelah foto dihapus, tidak dapat dikembalikan. Harap pastikan.</p>
@@ -246,6 +247,7 @@ try {
                         Hapus Foto
                     </button>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </main>

@@ -206,7 +206,7 @@ $canEdit = $isOwner || isAdmin();
                             Edit
                         </a>
                         <?php endif; ?>
-                        <?php if ($canDelete): ?>
+                        <?php if (isAdmin()): ?>
                         <button onclick="confirmDelete(<?php echo $photoId; ?>)" class="px-4 py-2 bg-red-100 text-red-600 rounded-xl hover:bg-red-200 transition-all">
                             Hapus
                         </button>
