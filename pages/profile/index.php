@@ -95,7 +95,6 @@ try {
                 </div>
                 <div class="flex items-center space-x-4">
                     <a href="<?php echo baseUrl('pages/gallery/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Gallery</a>
-                    <a href="<?php echo baseUrl('pages/gallery/upload.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Upload</a>
                     <a href="<?php echo baseUrl('pages/album/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Albums</a>
                     <a href="<?php echo baseUrl('pages/profile/index.php'); ?>" class="text-white px-3 py-2 rounded-lg bg-white/20">Profile</a>
                     <div class="flex items-center space-x-3">

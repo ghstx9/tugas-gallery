@@ -96,7 +96,6 @@ try {
                 </div>
                 <div class="flex items-center space-x-4">
                     <a href="<?php echo baseUrl('pages/gallery/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Gallery</a>
-                    <a href="<?php echo baseUrl('pages/gallery/upload.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Upload</a>
                     <a href="<?php echo baseUrl('pages/album/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Albums</a>
                     <a href="<?php echo baseUrl('pages/profile/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">Profile</a>
                     <div class="flex items-center space-x-3">
@@ -144,6 +143,7 @@ try {
                 <?php if ($isOwner): ?>
                     <div class="flex items-center space-x-2">
                         <a href="<?php echo baseUrl('pages/album/edit.php?id=' . $albumId); ?>" class="px-4 py-2 bg-blue-100 text-blue-600 rounded-xl hover:bg-blue-200 transition-all">Edit</a>
+                        <button onclick="confirmDelete(<?php echo $albumId; ?>, '<?php echo e(addslashes($album['NamaAlbum'])); ?>')" class="px-4 py-2 bg-red-100 text-red-600 rounded-xl hover:bg-red-200 transition-all">Delete</button>
                     </div>
                 <?php endif; ?>
             </div>
@@ -213,5 +213,13 @@ try {
             </div>
         <?php endif; ?>
     </main>
+    
+    <script>
+        function confirmDelete(albumId, albumName) {
+            if (confirm('Are you sure you want to delete "' + albumName + '"? Photos in this album will NOT be deleted, but will become orphaned.')) {
+                window.location.href = '<?php echo baseUrl('actions/album/delete_action.php'); ?>?id=' + albumId;
+            }
+        }
+    </script>
 </body>
 </html>

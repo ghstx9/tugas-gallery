@@ -87,9 +87,6 @@ $user = getCurrentUser();
                         <a href="<?php echo baseUrl('pages/gallery/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
                             Gallery
                         </a>
-                        <a href="<?php echo baseUrl('pages/gallery/upload.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
-                            Upload
-                        </a>
                         <a href="<?php echo baseUrl('pages/album/index.php'); ?>" class="text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-all">
                             Albums
                         </a>
@@ -180,63 +177,7 @@ $user = getCurrentUser();
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">Why Choose TugasGallery?</h2>
-                <p class="text-gray-500 text-lg max-w-2xl mx-auto">Everything you need to store, organize, and share your precious memories in one place.</p>
-            </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-                    <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Easy Upload</h3>
-                    <p class="text-gray-500">Upload your photos with just a few clicks. Support for JPG, PNG, GIF, and WebP formats.</p>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-                    <div class="w-14 h-14 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-7 h-7 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Organize in Albums</h3>
-                    <p class="text-gray-500">Create custom albums to organize your photos. Keep your memories neatly categorized.</p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-                    <div class="w-14 h-14 bg-pink-100 rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-7 h-7 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Likes & Comments</h3>
-                    <p class="text-gray-500">Engage with the community. Like and comment on photos you love.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <?php if (!$isLoggedIn): ?>
-    <section class="gradient-bg py-20">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">Ready to Start Sharing?</h2>
-            <p class="text-white/80 text-lg mb-8">Join TugasGallery today and start uploading your favorite photos.</p>
-            <a href="<?php echo baseUrl('pages/auth/register.php'); ?>" class="inline-block px-8 py-4 bg-white text-purple-600 font-bold rounded-2xl hover:bg-gray-100 transition-all transform hover:scale-105 shadow-xl">
-                Create Free Account
-            </a>
-        </div>
-    </section>
-    <?php endif; ?>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
